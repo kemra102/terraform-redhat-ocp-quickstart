@@ -1,16 +1,16 @@
 resource "aws_instance" "ansible_config_server" {
-  ami                    = "${data.aws_ami.rhel74.id}"
-  instance_type          = "${var.ansible_instance_type}"
-  key_name               = "${var.keypair_name}"
-  monitoring             = true
-  subnet_id              = "${aws_subnet.openshift_private.0.id}"
-  iam_instance_profile   = "${aws_iam_instance_profile.setup_role_profile.id}"
-  user_data              = "${data.template_cloudinit_config.ansible.rendered}"
-  tags                   = "${merge(var.default_tags, map("Name", "ansible-config-server-${random_id.suffix.hex}"))}"
+  ami                  = "${data.aws_ami.rhel74.id}"
+  instance_type        = "${var.ansible_instance_type}"
+  key_name             = "${var.keypair_name}"
+  monitoring           = true
+  subnet_id            = "${aws_subnet.openshift_private.0.id}"
+  iam_instance_profile = "${aws_iam_instance_profile.setup_role_profile.id}"
+  user_data            = "${data.template_cloudinit_config.ansible.rendered}"
+  tags                 = "${merge(var.default_tags, map("Name", "ansible-config-server-${random_id.suffix.hex}"))}"
 
   vpc_security_group_ids = [
     "${aws_security_group.ocp_instances.id}",
-    "${aws_security_group.ocp_internal.id}"
+    "${aws_security_group.ocp_internal.id}",
   ]
 
   root_block_device {

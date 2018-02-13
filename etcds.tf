@@ -29,7 +29,7 @@ resource "aws_launch_configuration" "ocp_etcd" {
 
   security_groups = [
     "${aws_security_group.ocp_instances.id}",
-    "${aws_security_group.ocp_internal.id}"
+    "${aws_security_group.ocp_internal.id}",
   ]
 
   root_block_device {

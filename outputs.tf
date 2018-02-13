@@ -3,7 +3,7 @@ output "vpc_id" {
 }
 
 output "private_subnet_ids" {
-  value = "${aw_subnet.openshift_private.*.id}"
+  value = "${aws_subnet.openshift_private.*.id}"
 }
 
 output "private_route_table_ids" {

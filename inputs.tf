@@ -67,20 +67,22 @@ variable "enable_external_node_elb" {
 variable "ocp_master_external_elb_listeners" {
   description = "A list of hashes of listeners to be used by the OCP Master External ELB."
   type        = "list"
-  default     = [
+
+  default = [
     {
       instance_port     = 8443
       instance_protocol = "TCP"
       lb_port           = 8443
       lb_protocol       = "TCP"
-    }
+    },
   ]
 }
 
 variable "ocp_master_internal_elb_listeners" {
   description = "A list of hashes of listeners to be used by the OCP Master Internal ELB."
   type        = "list"
-  default     = [
+
+  default = [
     {
       instance_port     = 80
       instance_protocol = "TCP"
@@ -98,33 +100,35 @@ variable "ocp_master_internal_elb_listeners" {
       instance_protocol = "TCP"
       lb_port           = 8443
       lb_protocol       = "TCP"
-    }
+    },
   ]
 }
 
 variable "ocp_node_external_elb_listeners" {
   description = "A list of hashes of listeners to be used by the OCP Node External ELB."
   type        = "list"
-  default     = [
+
+  default = [
     {
       instance_port     = 443
       instance_protocol = "TCP"
       lb_port           = 443
       lb_protocol       = "TCP"
-    }
+    },
   ]
 }
 
 variable "ocp_node_internal_elb_listeners" {
   description = "A list of hashes of listeners to be used by the OCP Node Internal ELB."
   type        = "list"
-  default     = [
+
+  default = [
     {
       instance_port     = 8443
       instance_protocol = "TCP"
       lb_port           = 8443
       lb_protocol       = "TCP"
-    }
+    },
   ]
 }
 
