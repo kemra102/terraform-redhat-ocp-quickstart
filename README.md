@@ -12,7 +12,7 @@ In your code you can include the module like this:
 
 ```
 module "redhat-ocp-quickstart" {
-  source = "github.com/ubertasconsulting/terraform-redhat-ocp-quickstart"
+  source = "github.com/kemra102/terraform-redhat-ocp-quickstart"
 
   keypair_name                  = "ocp"
   redhat_subscription_user_name = "user@example.com"
@@ -32,7 +32,7 @@ You can add additional rules to this modules Security Groups by using the `aws_s
 
 ```
 resource "aws_security_group_rule" "stop_telneting_out" {
-  security_group_id = "${module.redhat-ocp-quickstart.output.instances_security_group_id}"
+  security_group_id = "${module.redhat-ocp-quickstart.instances_security_group_id}"
   type              = "egress"
   from_port         = 21
   to_port           = 21
@@ -47,7 +47,7 @@ You can add additional routes to existing Route Tables by using the `aws_route` 
 
 ```
 resource "aws_route" "peer" {
-  route_table_id            = "${module.redhat-ocp-quickstart.output.public_route_table_id)}"
+  route_table_id            = "${module.redhat-ocp-quickstart.public_route_table_id)}"
   destination_cidr_block    = "10.200.1/20"
   vpc_peering_connection_id = "${aws_vpc_peering_connection.logging.id}"
 }
@@ -59,7 +59,7 @@ By default ELBs are only created for the Master & Node instances and both are se
 
 ```
 module "redhat-ocp-quickstart" {
-  source = "github.com/ubertasconsulting/terraform-redhat-ocp-quickstart"
+  source = "github.com/kemra102/terraform-redhat-ocp-quickstart"
 
   keypair_name                  = "ocp"
   redhat_subscription_user_name = "user@example.com"
@@ -87,7 +87,7 @@ variable "my_listeners" {
 }
 
 module "redhat-ocp-quickstart" {
-  source = "github.com/ubertasconsulting/terraform-redhat-ocp-quickstart"
+  source = "github.com/kemra102/terraform-redhat-ocp-quickstart"
 
   keypair_name                    = "ocp"
   redhat_subscription_user_name   = "user@example.com"
